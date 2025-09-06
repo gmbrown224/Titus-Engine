@@ -93,9 +93,6 @@
     <ClInclude Include="src\Titus\Rendering\Resources\ShaderCompiler.h">
       <Filter>src\Titus\Rendering\Resources</Filter>
     </ClInclude>
-    <ClInclude Include="src\Titus\Window\Input\GamepadCodes.h">
-      <Filter>src\Titus\Window\Input</Filter>
-    </ClInclude>
     <ClInclude Include="src\Titus\Window\Input\Input.h">
       <Filter>src\Titus\Window\Input</Filter>
     </ClInclude>
@@ -103,9 +100,6 @@
       <Filter>src\Titus\Window\Input</Filter>
     </ClInclude>
     <ClInclude Include="src\Titus\Window\Input\MouseCodes.h">
-      <Filter>src\Titus\Window\Input</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Titus\Window\Input\Scancodes.h">
       <Filter>src\Titus\Window\Input</Filter>
     </ClInclude>
     <ClInclude Include="src\Titus\Window\Window.h">
@@ -1365,6 +1359,9 @@
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp">
       <Filter>vendor\glm\glm</Filter>
     </ClInclude>
+    <ClInclude Include="src\Platform\Windows\WinWindow.h" />
+    <ClInclude Include="src\Platform\Windows\WinInput.h" />
+    <ClInclude Include="vendor\GLFW\include\GLFW\glfw3.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\TEpch.cpp">
@@ -1388,5 +1385,10 @@
     <ClCompile Include="src\Titus\Logging\Log.cpp">
       <Filter>src\Titus\Logging</Filter>
     </ClCompile>
+    <ClCompile Include="src\Platform\Windows\WinWindow.cpp" />
+    <ClCompile Include="src\Platform\Windows\WinInput.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="src\Assets\Logos\Spartan.png" />
   </ItemGroup>
 </Project>

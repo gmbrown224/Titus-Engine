@@ -14,4 +14,14 @@ int main(int argc, char** argv)
 	delete app;
 }
 
+//int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE, LPSTR, int)
+//{
+//	Titus::Log::Init();
+//	auto app = Titus::CreateApplication();
+//
+//	app->Run();
+//
+//	delete app;
+//}
+
 #endif

@@ -3,23 +3,35 @@
 	url = https://github.com/gabime/spdlog/
 [submodule "Titus-Engine/vendor/imgui"]
 	path = Titus-Engine/vendor/imgui
-	url = https://github.com/gmbrown224/Titus-Engine-imgui
+	url = https://github.com/ocornut/imgui
 	branch = docking
 [submodule "Titus-Engine/vendor/stb"]
 	path = Titus-Engine/vendor/stb
-	url = https://github.com/gmbrown224/Titus-Engine-stb
+	url = https://github.com/nothings/stb
 [submodule "Titus-Engine/vendor/glm"]
 	path = Titus-Engine/vendor/glm
 	url = https://github.com/g-truc/glm
-[submodule "Titus-Engine/vendor/SDL"]
-	path = Titus-Engine/vendor/SDL
-	url = https://github.com/libsdl-org/SDL
 [submodule "Titus-Engine/vendor/Vulkan-Loader"]
 	path = Titus-Engine/vendor/Vulkan-Loader
-	url = https://github.com/gmbrown224/Titus-Engine-Vulkan-Loader
+	url = https://github.com/KhronosGroup/Vulkan-Loader
 [submodule "Titus-Engine/vendor/MoltenVK"]
 	path = Titus-Engine/vendor/MoltenVK
-	url = https://github.com/gmbrown224/Titus-Engine-MoltenVK
+	url = https://github.com/KhronosGroup/MoltenVK
 [submodule "Titus-Engine/vendor/Vulkan-Headers"]
 	path = Titus-Engine/vendor/Vulkan-Headers
 	url = https://github.com/KhronosGroup/Vulkan-Headers
+[submodule "Titus-Engine/vendor/GLFW"]
+	path = Titus-Engine/vendor/GLFW
+	url = https://github.com/glfw/glfw
+[submodule "Titus-Engine/vendor/EnTT"]
+	path = Titus-Engine/vendor/EnTT
+	url = https://github.com/skypjack/entt
+[submodule "Titus-Engine/vendor/Assimp"]
+	path = Titus-Engine/vendor/Assimp
+	url = https://github.com/assimp/assimp
+[submodule "Titus-Engine/vendor/miniaudio"]
+	path = Titus-Engine/vendor/miniaudio
+	url = https://github.com/mackron/miniaudio
+[submodule "Titus-Engine/vendor/asio"]
+	path = Titus-Engine/vendor/asio
+	url = https://github.com/chriskohlhoff/asio

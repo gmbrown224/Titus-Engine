@@ -1,8 +1,8 @@
 #include "TEpch.h"
 
 #include "Application.h"
-#include "Titus/Logging/Log.h"
-#include "SDL3/SDL_vulkan.h"
+#include "Logging/Log.h"
+#include "Window/Input/Input.h"
 
 namespace Titus
 {
@@ -10,50 +10,33 @@ namespace Titus
 
 	Application* Application::s_Instance = nullptr;
 
-	Application::Application() 
+	Application::Application()
 	{
 		TE_CORE_ASSERT(!s_Instance, "Application already exists!");
 		s_Instance = this;
 
-		if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_EVENTS) != 0)
-		{
-			TE_CORE_ERROR("Failed to initialize SDL: {0}", SDL_GetError());
-			return;
-		}
-
-		SDL_Vulkan_LoadLibrary(nullptr);
-
-		m_Window = std::make_unique<Window>(1280, 720, "TITEN", SDL_WINDOW_VULKAN | SDL_WINDOW_RESIZABLE | SDL_WINDOW_HIDDEN);
-
-		if (!m_Window) {
-			TE_CORE_ERROR("SDL_CreateWindow Error: ", SDL_GetError());
-		}
-
-		// m_Window->SetEventCallback(TE_BIND_EVENT_FN(OnEvent));
-
-		m_ImGuiLayer = new ImGuiLayer();
-		PushOverlay(m_ImGuiLayer);
+		m_Window = std::unique_ptr<Window>(Window::Create());
+		m_Window->SetEventCallback(BIND_EVENT_FN(OnEvent));
 	}
 
-	Application::~Application()
-	{
-		SDL_Quit();
-	}
+	Application::~Application() {}
 
 	void Application::PushLayer(Layer* layer)
 	{
 		m_LayerStack.PushLayer(layer);
+		layer->OnAttach();
 	}
 
 	void Application::PushOverlay(Layer* overlay)
 	{
 		m_LayerStack.PushOverlay(overlay);
+		overlay->OnAttach();
 	}
 
 	void Application::OnEvent(Event& e)
 	{
-		/*EventDispatcher dispatcher(e);
-		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(OnWindowClose));*/
+		EventDispatcher dispatcher(e);
+		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(OnWindowClose));
 
 		for (auto it = m_LayerStack.end(); it != m_LayerStack.begin(); )
 		{
@@ -65,25 +48,12 @@ namespace Titus
 
 	void Application::Run()
 	{
-		m_Window->Show();
-
 		while (m_Running)
 		{
-			for (SDL_Event event; SDL_PollEvent(&event); )
-			{
-				if (event.type == SDL_EVENT_QUIT)
-				{
-					m_Running = false;
-				}
-				// Handle other events as needed
-			}
-
-			m_ImGuiLayer->Begin();
 			for (Layer* layer : m_LayerStack)
-				layer->OnImGuiRender();
-			m_ImGuiLayer->End();
+				layer->OnUpdate();
 
-			//m_Window->OnUpdate();
+			m_Window->OnUpdate();
 		}
 	}
 
