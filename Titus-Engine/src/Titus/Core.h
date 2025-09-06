@@ -2,7 +2,8 @@
 
 #include "TEpch.h"
 
-#if defined(_WIN32)
+/* FOR DLLs
+#ifdef TE_PLATFORM_WINDOWS
 	#if defined(TE_BUILD_DLL)
 		#define TITUS_API __declspec(dllexport)
 	#elif defined(TE_USE_DLL)
@@ -13,10 +14,9 @@
 #else
 	#define TITUS_API
 #endif
+*/
 
-#ifndef TE_API
-	#define TE_API TITUS_API
-#endif
+#define TITUS_API
 
 #ifdef TE_ENABLE_ASSERTS
 	#define TE_ASSERT(x, ...) { if(!(x)) { TE_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }

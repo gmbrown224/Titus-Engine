@@ -1,5 +1,7 @@
 #include <Titus.h>
 
+#include <Titus/Events/KeyEvent.h>
+
 class Layer : public Titus::Layer
 {
 public:
@@ -7,7 +9,7 @@ public:
 
 	void OnUpdate() override { }
 
-	void OnImGuiRender() override
+	void OnImGuiRender()
 	{
 		//ImGui::Begin("Hello, ImGui!");
 
@@ -21,9 +23,9 @@ public:
 	{
 		if (event.GetEventType() == Titus::EventType::KeyPressed)
 		{
-			//Titus::KeyPressedEvent& e = (Titus::KeyPressedEvent&)event;
-			//if (e.GetKeyCode() == TE_TAB)
-			//	APP_TRACE("Tab key is pressed (event)");
+			Titus::KeyPressedEvent& e = (Titus::KeyPressedEvent&)event;
+
+			APP_TRACE("Key Event: {0}", e.GetKeyCode());
 		}
 	}
 };

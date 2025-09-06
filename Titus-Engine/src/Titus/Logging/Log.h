@@ -33,14 +33,3 @@ namespace Titus
 #define APP_WARN(...)      ::Titus::Log::GetClientLogger()->warn(__VA_ARGS__)
 #define APP_ERROR(...)     ::Titus::Log::GetClientLogger()->error(__VA_ARGS__)
 #define APP_CRITICAL(...)  ::Titus::Log::GetClientLogger()->critical(__VA_ARGS__)
-
-// TODO: Strip core logging from production builds
-/*
-* // If dist build
-* 
-* #define TE_CORE_TRACE(...)
-* #define TE_CORE_INFO(...)
-* #define TE_CORE_WARN(...)
-* #define TE_CORE_ERROR(...)
-* #define TE_CORE_CRITICAL(...)
-*/
